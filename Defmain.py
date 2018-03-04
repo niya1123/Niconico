@@ -8,7 +8,6 @@ from lxml.html import fromstring
 from settings import mail_tel, password
 # settings.pyというファイルを作ってそこにmail_tel,passwordを記述すること.
 # 例えばmail_tel='hogehoge@gmail.com',password='hogehoge1111'と記述する.
-from progressbar import ProgressBar
 
 """
 opener:Cookieを利用するためのもの.
@@ -61,6 +60,7 @@ def getVideo():
         """
         doc = fromstring(getVideoAndTitle.read().decode(encoding))
         title = doc.head.find('title').text.split(' - ')[0]
+        # ファイル名に使えない記号をreplaceを使って削除している.
         for c in '\/?:*"><|':
             title = title.replace(c, '')
     getVideoAndTitle.close()
