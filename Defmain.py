@@ -61,7 +61,7 @@ def getVideo():
         doc = fromstring(getVideoAndTitle.read().decode(encoding))
         title = doc.head.find('title').text.split(' - ')[0]
         # ファイル名に使えない記号をreplaceを使って削除している.
-        for c in '\/?:*"><|':
+        for c in '\/><|":?*':
             title = title.replace(c, '')
     getVideoAndTitle.close()
 
